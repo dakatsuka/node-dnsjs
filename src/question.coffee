@@ -21,6 +21,7 @@ class Question
   constructor: ->
     if typeof arguments['0'] == 'object'
       req = arguments['0']
+      req = new Buffer(req.toString('hex'), 'hex')
 
       @qName  = this.parseQname(req.slice(12, req.length - 4))
       @qType  = new QType(req.slice(req.length - 4, req.length - 2))
